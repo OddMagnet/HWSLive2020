@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DiscoverView: View {
     let location: Location
+    @State private var region: MKCoordinateRegion
+
+    init(location: Location) {
+        self.location = location
+        _region = State(wrappedValue: MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.5, longitudeDelta: 0.5)))
+    }
 
     var body: some View {
         GeometryReader { geo in
@@ -76,6 +83,14 @@ struct DiscoverView: View {
                                 .font(.title3)
                                 .bold()
                                 .padding(.top, 20)
+
+                            Map(coordinateRegion: $region, interactionModes: [])
+                                .aspectRatio(2, contentMode: .fill)
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .stroke(Color.secondary.opacity(0.5), lineWidth: 2)
+                                )
 
                             Text(location.more)
                                 .fixedSize(horizontal: false, vertical: true)
