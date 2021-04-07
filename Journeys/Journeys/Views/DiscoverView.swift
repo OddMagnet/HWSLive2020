@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct DiscoverView: View {
     let location: Location
@@ -76,6 +77,22 @@ struct DiscoverView: View {
                                 .font(.title3)
                                 .bold()
                                 .padding(.top, 20)
+
+                            Map(
+                                coordinateRegion: .constant(
+                                    MKCoordinateRegion(
+                                        center: location.coordinate,
+                                        span: MKCoordinateSpan(latitudeDelta: 0.3, longitudeDelta: 0.3)
+                                    )
+                                ),
+                                interactionModes: []
+                            )
+                            .aspectRatio(2, contentMode: .fill)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .stroke(Color.black.opacity(0.5), lineWidth: 2)
+                            )
 
                             Text(location.more)
                                 .fixedSize(horizontal: false, vertical: true)
