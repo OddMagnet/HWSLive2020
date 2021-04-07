@@ -54,6 +54,20 @@ struct DiscoverView: View {
                         }
                         .padding(.horizontal, 20)
 
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            LazyHStack {
+                                ForEach(location.pictures, id: \.self) { picture in
+                                    Image("\(picture)-thumb")
+                                        .resizable()
+                                        .frame(width: 150)
+                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                }
+                            }
+                        }
+                        .frame(height: 85)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+
                         VStack(alignment: .leading) {
                             Text(location.description)
                                 .fixedSize(horizontal: false, vertical: true)
