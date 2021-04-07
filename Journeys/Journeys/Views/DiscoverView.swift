@@ -54,6 +54,7 @@ struct DiscoverView: View {
                         }
                         .padding(.horizontal, 20)
 
+                        // Example solution for Discovery-Tab images
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(location.pictures, id: \.self) { picture in
@@ -63,10 +64,9 @@ struct DiscoverView: View {
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
+                            .frame(height: 100)
+                            .padding([.horizontal, .bottom], 20)
                         }
-                        .frame(height: 85)
-                        .padding(.horizontal)
-                        .padding(.bottom)
 
                         VStack(alignment: .leading) {
                             Text(location.description)
