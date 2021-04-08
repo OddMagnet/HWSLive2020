@@ -6,4 +6,6 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 ## Journeys
 - Lazy Stacks
 - Integrating Maps in SwiftUI
--
+- Disclosure indicators
+- Paging TabView
+- Grids
