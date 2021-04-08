@@ -95,18 +95,24 @@ struct DiscoverView: View {
                                     .stroke(Color.black.opacity(0.5), lineWidth: 2)
                             )
 
-                            VStack {
-                                DisclosureGroup("Travel Advisories", isExpanded: $travelAdvisoryShowing) {
-                                    Text(location.advisory)
-                                }
-                                .contentShape(Rectangle())
-                                .onTapGesture {
-                                    withAnimation {
-                                        travelAdvisoryShowing.toggle()
+                            if location.advisory.isEmpty == false {
+                                VStack {
+                                    DisclosureGroup(isExpanded: $travelAdvisoryShowing) {
+                                        Text(location.advisory)
+                                            .font(.caption)
+                                    } label: {
+                                        Text("Travel Advisories")
+                                            .font(.headline)
                                     }
-                                }
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        withAnimation {
+                                            travelAdvisoryShowing.toggle()
+                                        }
+                                    }
 
-                                Spacer()
+                                    Spacer()
+                                }
                             }
 
                             Text(location.more)
