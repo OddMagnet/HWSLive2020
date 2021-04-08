@@ -11,9 +11,31 @@ struct PicksView: View {
     @EnvironmentObject var locations: Locations
 
     var body: some View {
-        Text("Hello, World!")
-            .padding()
-            .navigationTitle("Our Top Picks")
+        ScrollView {
+            TabView {
+                ForEach(1 ..< 9) { img in
+                    GeometryReader { geo in
+                        Image("photo\(img)")
+                            .resizable()
+                            .scaledToFill()
+                            .padding(.horizontal ,2)
+                            .frame(width: geo.size.width)
+                            .clipped()
+                        /* Reasoning for modifiers
+                         - resizable, to enable further modifiers
+                         - scaledToFill, so the frame will be filled no matter what
+                         - padding() to add a little bit of visible background to the sides
+                         - frame(...), to provide a frame that fills the screens width
+                         - clipped(), to clip whatever goes outside the frame, if necessary
+                         */
+                    }
+                }
+            }
+            .frame(height: 280)
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle())
+        }
+        .navigationTitle("Our Top Picks")
     }
 }
 
