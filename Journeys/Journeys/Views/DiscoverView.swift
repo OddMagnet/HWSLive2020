@@ -84,6 +84,7 @@ struct DiscoverView: View {
                                 .bold()
                                 .padding(.top, 20)
 
+                            // Example solution for integrating a map
                             Map(coordinateRegion: $region, interactionModes: [])
                                 .aspectRatio(2, contentMode: .fill)
                                 .clipShape(RoundedRectangle(cornerRadius: 10))
@@ -91,6 +92,17 @@ struct DiscoverView: View {
                                     RoundedRectangle(cornerRadius: 10)
                                         .stroke(Color.secondary.opacity(0.5), lineWidth: 2)
                                 )
+
+                            // Example solution for Disclosure Group
+                            if location.advisory.isEmpty == false {
+                                DisclosureGroup {
+                                    Text(location.advisory)
+                                } label: {
+                                    Text("Travel advisories")
+                                        .font(.headline)
+                                }
+                                .padding(.top)
+                            }
 
                             Text(location.more)
                                 .fixedSize(horizontal: false, vertical: true)
