@@ -10,6 +10,7 @@ import MapKit
 
 struct DiscoverView: View {
     let location: Location
+    @State private var travelAdvisoryShowing = false
 
     var body: some View {
         GeometryReader { geo in
@@ -93,6 +94,20 @@ struct DiscoverView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(Color.black.opacity(0.5), lineWidth: 2)
                             )
+
+                            VStack {
+                                DisclosureGroup("Travel Advisories", isExpanded: $travelAdvisoryShowing) {
+                                    Text(location.advisory)
+                                }
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    withAnimation {
+                                        travelAdvisoryShowing.toggle()
+                                    }
+                                }
+
+                                Spacer()
+                            }
 
                             Text(location.more)
                                 .fixedSize(horizontal: false, vertical: true)
