@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C2464FF262093EE00273921 /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2464FE262093EE00273921 /* DestinationView.swift */; };
 		4CA7F139261B438600A5C558 /* JourneysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F138261B438600A5C558 /* JourneysApp.swift */; };
 		4CA7F13B261B438600A5C558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F13A261B438600A5C558 /* ContentView.swift */; };
 		4CA7F13D261B438A00A5C558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F13C261B438A00A5C558 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C2464FE262093EE00273921 /* DestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationView.swift; sourceTree = "<group>"; };
 		4CA7F135261B438600A5C558 /* Journeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journeys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7F138261B438600A5C558 /* JourneysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneysApp.swift; sourceTree = "<group>"; };
 		4CA7F13A261B438600A5C558 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				4CA7F15A261B474200A5C558 /* DiscoverView.swift */,
 				4CA7F15D261B474A00A5C558 /* PicksView.swift */,
+				4C2464FE262093EE00273921 /* DestinationView.swift */,
 				4CA7F160261B475100A5C558 /* TipsView.swift */,
 			);
 			path = Views;
@@ -196,6 +199,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C2464FF262093EE00273921 /* DestinationView.swift in Sources */,
 				4CA7F13B261B438600A5C558 /* ContentView.swift in Sources */,
 				4CA7F139261B438600A5C558 /* JourneysApp.swift in Sources */,
 				4CA7F15B261B474200A5C558 /* DiscoverView.swift in Sources */,
