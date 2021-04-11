@@ -9,3 +9,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Disclosure indicators
 - Paging TabView
 - Grids
+- Map Annotations
