@@ -15,12 +15,8 @@ struct DestinationView: View {
             Image(location.country)
                 .renderingMode(.original)   // avoiding images getting blue tint in NavigationLinks
                 .resizable()
+                .flagStyle()
                 .scaledToFit()
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.black, lineWidth: 1)
-                )
 
             Text(location.name)
                 .font(.subheadline)
