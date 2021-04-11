@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C09A5182622EC0A00E5F533 /* LocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09A5172622EC0A00E5F533 /* LocationsView.swift */; };
 		4CA7F139261B438600A5C558 /* JourneysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F138261B438600A5C558 /* JourneysApp.swift */; };
 		4CA7F13B261B438600A5C558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F13A261B438600A5C558 /* ContentView.swift */; };
 		4CA7F13D261B438A00A5C558 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CA7F13C261B438A00A5C558 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C09A5172622EC0A00E5F533 /* LocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsView.swift; sourceTree = "<group>"; };
 		4CA7F135261B438600A5C558 /* Journeys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Journeys.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CA7F138261B438600A5C558 /* JourneysApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JourneysApp.swift; sourceTree = "<group>"; };
 		4CA7F13A261B438600A5C558 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				4CA7F15A261B474200A5C558 /* DiscoverView.swift */,
 				4CA7F15D261B474A00A5C558 /* PicksView.swift */,
 				4CA7F160261B475100A5C558 /* TipsView.swift */,
+				4C09A5172622EC0A00E5F533 /* LocationsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				4CA7F154261B453300A5C558 /* Location.swift in Sources */,
 				4CA7F161261B475100A5C558 /* TipsView.swift in Sources */,
 				4CA7F164261B4A8D00A5C558 /* Tips.swift in Sources */,
+				4C09A5182622EC0A00E5F533 /* LocationsView.swift in Sources */,
 				4CA7F14E261B449E00A5C558 /* Bundle-Decodable.swift in Sources */,
 				4CA7F15E261B474A00A5C558 /* PicksView.swift in Sources */,
 			);

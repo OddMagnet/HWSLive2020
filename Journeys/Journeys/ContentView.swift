@@ -41,6 +41,15 @@ struct ContentView: View {
                     .imageScale(.large)
                 Text("Tips")
             }
+
+            NavigationView {
+                LocationsView()
+            }
+            .tabItem {
+                Image(systemName: "map.fill")
+                    .imageScale(.large)
+                Text("Map")
+            }
         }
     }
 }
