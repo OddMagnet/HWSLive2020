@@ -16,3 +16,9 @@ struct Tip: Decodable, Identifiable {
     let title: String
     let body: String
 }
+
+struct ExpandingTip: Identifiable {
+    var id: String { content }
+    let content: String
+    var answer: [ExpandingTip]?
+}

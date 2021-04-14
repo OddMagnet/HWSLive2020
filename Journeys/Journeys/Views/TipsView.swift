@@ -10,12 +10,27 @@ import SwiftUI
 struct TipsView: View {
     let tips = Bundle.main.decode([Tip].self, from: "tips.json")
 
+    var expandingTips: [ExpandingTip] {
+        var result = [ExpandingTip]()
+
+        for tip in tips {
+            let child = ExpandingTip(content: tip.body)
+            let parent = ExpandingTip(content: tip.title, answer: [child])
+            result.append(parent)
+        }
+
+        return result
+    }
+
     var body: some View {
-        List(tips) { tip in
+        List(expandingTips, children: \.answer) { tip in
             VStack(alignment: .leading) {
-                Text(tip.title)
-                    .font(.headline)
-                Text(tip.body)
+                if tip.answer != nil {      // different font for the titles
+                    Text(tip.content)
+                        .font(.headline)
+                } else {
+                    Text(tip.content)
+                }
             }
             .padding(.vertical)
         }
