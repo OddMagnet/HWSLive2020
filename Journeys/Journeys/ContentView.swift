@@ -12,7 +12,38 @@ Your company has been asked to build a proof of concept for a travel company –
 Your CTO put together the bare bones of the app, but it's down to you to fill it out with lots of SwiftUI code from iOS 14.
 */
 
-struct ContentView: View {
+// Example solution for Sidebar
+struct SidebarNavigation: View {
+    @EnvironmentObject var locations: Locations
+
+    var body: some View {
+        NavigationView {
+            List {
+                NavigationLink(destination: DiscoverView(location: locations.primary)) {
+                    Text("Discover")
+                }
+
+                NavigationLink(destination: PicksView()) {
+                    Text("Our Picks")
+                }
+
+                NavigationLink(destination: LocationsView()) {
+                    Text("Vacation Map")
+                }
+
+                NavigationLink(destination: TipsView()) {
+                    Text("Tips")
+                }
+            }
+            .navigationTitle("Journeys")
+            .listStyle(SidebarListStyle())
+
+            DiscoverView(location: locations.primary)
+        }
+    }
+}
+// Example solution for Sidebar
+struct TabNavigation: View {
     @EnvironmentObject var locations: Locations
 
     var body: some View {
@@ -50,6 +81,18 @@ struct ContentView: View {
                     .imageScale(.large)
                 Text("Map")
             }
+        }
+    }
+}
+
+struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
+    // Example solution for Sidebar
+    var body: some View {
+        if sizeClass == .compact {
+            TabNavigation()
+        } else {
+            SidebarNavigation()
         }
     }
 }
