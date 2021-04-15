@@ -13,42 +13,14 @@ Your CTO put together the bare bones of the app, but it's down to you to fill it
 */
 
 struct ContentView: View {
+    @Environment(\.horizontalSizeClass) var sizeClass
     @EnvironmentObject var locations: Locations
 
     var body: some View {
-        TabView {
-            DiscoverView(location: locations.primary)
-                .tabItem {
-                    Image(systemName: "airplane.circle.fill")
-                        .imageScale(.large)
-                    Text("Discover")
-                }
-
-            NavigationView {
-                PicksView()
-            }
-            .tabItem {
-                Image(systemName: "star.fill")
-                    .imageScale(.large)
-                Text("Picks")
-            }
-
-            NavigationView {
-                TipsView()
-            }
-            .tabItem {
-                Image(systemName: "list.bullet")
-                    .imageScale(.large)
-                Text("Tips")
-            }
-
-            NavigationView {
-                MapView()
-            }
-            .tabItem {
-                Image(systemName: "map.fill")
-                Text("Map")
-            }
+        if sizeClass == .compact {
+            TabNavigationView()
+        } else {
+            SidebarNavigationView()
         }
     }
 }

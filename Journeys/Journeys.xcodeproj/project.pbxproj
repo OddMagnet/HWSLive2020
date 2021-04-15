@@ -22,6 +22,8 @@
 		4CA7F15E261B474A00A5C558 /* PicksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F15D261B474A00A5C558 /* PicksView.swift */; };
 		4CA7F161261B475100A5C558 /* TipsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F160261B475100A5C558 /* TipsView.swift */; };
 		4CA7F164261B4A8D00A5C558 /* Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F163261B4A8D00A5C558 /* Tips.swift */; };
+		4CAE7A372628D8A8007A9993 /* SidebarNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE7A362628D8A8007A9993 /* SidebarNavigationView.swift */; };
+		4CAE7A3B2628D8B5007A9993 /* TabNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAE7A3A2628D8B5007A9993 /* TabNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +44,8 @@
 		4CA7F15D261B474A00A5C558 /* PicksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicksView.swift; sourceTree = "<group>"; };
 		4CA7F160261B475100A5C558 /* TipsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipsView.swift; sourceTree = "<group>"; };
 		4CA7F163261B4A8D00A5C558 /* Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tips.swift; sourceTree = "<group>"; };
+		4CAE7A362628D8A8007A9993 /* SidebarNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarNavigationView.swift; sourceTree = "<group>"; };
+		4CAE7A3A2628D8B5007A9993 /* TabNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,7 @@
 		4CA7F151261B450400A5C558 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4CAE7A352628D895007A9993 /* Navigation */,
 				4CA7F15A261B474200A5C558 /* DiscoverView.swift */,
 				4CA7F15D261B474A00A5C558 /* PicksView.swift */,
 				4C2464FE262093EE00273921 /* DestinationView.swift */,
@@ -132,6 +137,15 @@
 				4CA7F163261B4A8D00A5C558 /* Tips.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4CAE7A352628D895007A9993 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				4CAE7A362628D8A8007A9993 /* SidebarNavigationView.swift */,
+				4CAE7A3A2628D8B5007A9993 /* TabNavigationView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +223,7 @@
 				4CA7F13B261B438600A5C558 /* ContentView.swift in Sources */,
 				4CA7F139261B438600A5C558 /* JourneysApp.swift in Sources */,
 				4CA7F15B261B474200A5C558 /* DiscoverView.swift in Sources */,
+				4CAE7A3B2628D8B5007A9993 /* TabNavigationView.swift in Sources */,
 				4CA7F154261B453300A5C558 /* Location.swift in Sources */,
 				4CA7F161261B475100A5C558 /* TipsView.swift in Sources */,
 				4CA7F164261B4A8D00A5C558 /* Tips.swift in Sources */,
@@ -216,6 +231,7 @@
 				4CA7F14E261B449E00A5C558 /* Bundle-Decodable.swift in Sources */,
 				4CA7F15E261B474A00A5C558 /* PicksView.swift in Sources */,
 				4C09A5112622E90700E5F533 /* Image+FlagStyle.swift in Sources */,
+				4CAE7A372628D8A8007A9993 /* SidebarNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
