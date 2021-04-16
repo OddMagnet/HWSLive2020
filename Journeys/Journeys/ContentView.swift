@@ -18,21 +18,22 @@ struct SidebarNavigation: View {
 
     var body: some View {
         NavigationView {
+            // Example solution for labels
             List {
                 NavigationLink(destination: DiscoverView(location: locations.primary)) {
-                    Text("Discover")
+                    Label("Discover", systemImage: "airplane.circle.fill")
                 }
 
                 NavigationLink(destination: PicksView()) {
-                    Text("Our Picks")
+                    Label("Our Picks", systemImage: "star.fill")
                 }
 
                 NavigationLink(destination: LocationsView()) {
-                    Text("Vacation Map")
+                    Label("Map", systemImage: "map.fill")
                 }
 
                 NavigationLink(destination: TipsView()) {
-                    Text("Tips")
+                    Label("Tips", systemImage: "list.bullet")
                 }
             }
             .navigationTitle("Journeys")
