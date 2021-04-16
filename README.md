@@ -12,3 +12,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Map Annotations
 - Expanding Lists
 - Sidebars
+- Labels
