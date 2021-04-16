@@ -15,7 +15,7 @@ struct TipsView: View {
 
         for tip in tips {
             let child = ExpandingTip(content: tip.body)
-            let parent = ExpandingTip(content: tip.title, answer: [child])
+            let parent = ExpandingTip(content: tip.title, image: tip.image, answer: [child])
             result.append(parent)
         }
 
@@ -26,7 +26,7 @@ struct TipsView: View {
         List(expandingTips, children: \.answer) { tip in
             VStack(alignment: .leading) {
                 if tip.answer != nil {      // different font for the titles
-                    Text(tip.content)
+                    Label(tip.content, systemImage: tip.image ?? "error")
                         .font(.headline)
                 } else {
                     Text(tip.content)
@@ -41,6 +41,7 @@ struct TipsView: View {
 struct TipsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
+            Text("iPad Placeholder Text")
             TipsView()
         }
     }

@@ -11,3 +11,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Grids
 - Map Annotations
 - Expanding Lists
+- Sidebars
