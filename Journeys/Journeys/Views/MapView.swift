@@ -19,6 +19,9 @@ struct MapView: View {
         span: MKCoordinateSpan(latitudeDelta: 150, longitudeDelta: 150)
     )
 
+    @ScaledMetric var annotationWidth: CGFloat = 60
+    @ScaledMetric var annotationHeight: CGFloat = 30
+
     var body: some View {
         // Create a map with annotationItems, using the `places` array of the EnvironmentObject `locations`
         Map(coordinateRegion: $region, annotationItems: locations.places) { location in
@@ -33,7 +36,7 @@ struct MapView: View {
                             .renderingMode(.original)   // avoid blue tint from the link
                             .resizable()
                             .flagStyle()
-                            .frame(width: 60, height: 30)
+                            .frame(width: annotationWidth, height: annotationHeight)
 
                         Text(location.name)
                             .bold()

@@ -41,7 +41,7 @@ struct TipsView: View {
 struct TipsView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            Text("iPad Placeholder Text")
+//            Text("iPad Placeholder Text")
             TipsView()
         }
     }

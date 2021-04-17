@@ -11,6 +11,8 @@ import MapKit
 struct DiscoverView: View {
     let location: Location
     @State private var travelAdvisoryShowing = false
+    @ScaledMetric var locationPreviewHeight: CGFloat = 85.0
+    @ScaledMetric var locationPreviewWidth: CGFloat = 150.0
 
     var body: some View {
         GeometryReader { geo in
@@ -61,12 +63,12 @@ struct DiscoverView: View {
                                 ForEach(location.pictures, id: \.self) { picture in
                                     Image("\(picture)-thumb")
                                         .resizable()
-                                        .frame(width: 150)
+                                        .frame(width: locationPreviewWidth)
                                         .clipShape(RoundedRectangle(cornerRadius: 10))
                                 }
                             }
                         }
-                        .frame(height: 85)
+                        .frame(height: locationPreviewHeight)
                         .padding(.horizontal)
                         .padding(.bottom)
 
