@@ -7,10 +7,13 @@
 
 import SwiftUI
 import MapKit
+import VisualEffects
 
 struct DiscoverView: View {
     let location: Location
+    @Namespace var matchedGeometry                              // used for matched geometry effect
     @State private var travelAdvisoryShowing = false
+    @State private var selectedPicture: String?                 // used for matched geometry effect
     @ScaledMetric var locationPreviewHeight: CGFloat = 85.0
     @ScaledMetric var locationPreviewWidth: CGFloat = 150.0
 
@@ -61,10 +64,25 @@ struct DiscoverView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(location.pictures, id: \.self) { picture in
-                                    Image("\(picture)-thumb")
-                                        .resizable()
-                                        .frame(width: locationPreviewWidth)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    // if the picture is selected, show a placeholder
+                                    if selectedPicture == picture {
+                                        Color.clear
+                                            .frame(width: locationPreviewWidth)
+                                    } else {
+                                        // otherwise just display the picture
+                                        Image("\(picture)-thumb")
+                                            .resizable()
+                                            .frame(width: locationPreviewWidth)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            // add the namespace for the matched geometry, using the pictures name as id
+                                            .matchedGeometryEffect(id: picture, in: matchedGeometry)
+                                            .onTapGesture {
+                                                // when tapped, change the selectedPicture with an animation
+                                                withAnimation(.easeInOut(duration: 0.3)) {
+                                                    selectedPicture = picture
+                                                }
+                                            }
+                                    }
                                 }
                             }
                         }
@@ -128,6 +146,67 @@ struct DiscoverView: View {
                             .fill(Color("Background"))
                     )
                 }
+
+                // Overlay for selected picture
+                if let picture = selectedPicture {
+                    VStack {
+                        ScrollView {
+                            VStack(alignment: .center) {
+                                Image(picture)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: .infinity)    // let the image take as much height as it needs
+                                    .matchedGeometryEffect(id: picture, in: matchedGeometry)
+                                    .onTapGesture {
+                                        withAnimation {
+                                            selectedPicture = nil
+                                        }
+                                    }
+
+                                Text("\(picture) - Location name")  // placeholder for later real location names
+                                    .font(.title)
+                                    .bold()
+                                    .padding()
+
+                                Text(String.init(repeating: "Placeholder ", count: 52))
+                                    .padding(.horizontal)
+                            }
+                        }
+
+                        Button {
+                            withAnimation {
+                                selectedPicture = nil
+                            }
+                        } label: {
+                            Image(systemName: "xmark.circle.fill")
+                            Text("Close")
+                                .bold()
+                        }
+                        .font(.title2)
+                        // Give the text some space
+                        .padding(.horizontal)
+                        .padding(.vertical, 5)
+                        // Back- and foreground colors
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        // Rounded corners
+                        .cornerRadius(20)
+                        // some padding
+                        .padding(3)
+                        // and an outer circle
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color.blue, lineWidth: 3)
+                        )
+                        // and make sure it doesn't touch the navbar
+                        .padding(.bottom, 10)
+                    }
+                    .background(
+                        VisualEffectBlur(blurStyle: .systemThinMaterial)
+                    )
+                    .zIndex(99)
+                }
+
             }
         }
         .background(Color("Background"))

@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4C09A5092622E18200E5F533 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09A5082622E18200E5F533 /* MapView.swift */; };
 		4C09A5112622E90700E5F533 /* Image+FlagStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C09A5102622E90700E5F533 /* Image+FlagStyle.swift */; };
+		4C17C40D262D73AC00DD8B96 /* VisualEffects in Frameworks */ = {isa = PBXBuildFile; productRef = 4C17C40C262D73AC00DD8B96 /* VisualEffects */; };
 		4C2464FF262093EE00273921 /* DestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2464FE262093EE00273921 /* DestinationView.swift */; };
 		4CA7F139261B438600A5C558 /* JourneysApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F138261B438600A5C558 /* JourneysApp.swift */; };
 		4CA7F13B261B438600A5C558 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA7F13A261B438600A5C558 /* ContentView.swift */; };
@@ -53,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C17C40D262D73AC00DD8B96 /* VisualEffects in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +166,9 @@
 			dependencies = (
 			);
 			name = Journeys;
+			packageProductDependencies = (
+				4C17C40C262D73AC00DD8B96 /* VisualEffects */,
+			);
 			productName = Journeys;
 			productReference = 4CA7F135261B438600A5C558 /* Journeys.app */;
 			productType = "com.apple.product-type.application";
@@ -191,6 +196,9 @@
 				Base,
 			);
 			mainGroup = 4CA7F12C261B438600A5C558;
+			packageReferences = (
+				4C17C40B262D73AC00DD8B96 /* XCRemoteSwiftPackageReference "VisualEffects" */,
+			);
 			productRefGroup = 4CA7F136261B438600A5C558 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -420,6 +428,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4C17C40B262D73AC00DD8B96 /* XCRemoteSwiftPackageReference "VisualEffects" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/VisualEffects";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4C17C40C262D73AC00DD8B96 /* VisualEffects */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4C17C40B262D73AC00DD8B96 /* XCRemoteSwiftPackageReference "VisualEffects" */;
+			productName = VisualEffects;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4CA7F12D261B438600A5C558 /* Project object */;
 }
