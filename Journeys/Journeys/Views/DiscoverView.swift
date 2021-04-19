@@ -7,10 +7,15 @@
 
 import SwiftUI
 import MapKit
+import VisualEffects
 
 struct DiscoverView: View {
     let location: Location
     @State private var region: MKCoordinateRegion
+
+    // Example solution for matched geometry effect
+    @Namespace var namespace
+    @State private var selectedPicture: String?
 
     init(location: Location) {
         self.location = location
@@ -65,10 +70,21 @@ struct DiscoverView: View {
                         ScrollView(.horizontal, showsIndicators: false) {
                             LazyHStack {
                                 ForEach(location.pictures, id: \.self) { picture in
-                                    Image("\(picture)-thumb")
-                                        .resizable()
-                                        .frame(width: 150)
-                                        .clipShape(RoundedRectangle(cornerRadius: 10))
+                                    if selectedPicture == picture {
+                                        Color.clear.frame(width: 150)
+                                    } else {
+                                        Image("\(picture)-thumb")
+                                            .resizable()
+                                            .frame(width: 150)
+                                            .clipShape(RoundedRectangle(cornerRadius: 10))
+                                            // Example solution for matched geometry effect
+                                            .onTapGesture {
+                                                withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.9)) {
+                                                    selectedPicture = picture
+                                                }
+                                            }
+                                            .matchedGeometryEffect(id: picture, in: namespace)
+                                    }
                                 }
                             }
                             .frame(height: 100)
@@ -114,6 +130,50 @@ struct DiscoverView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .fill(Color("Background"))
                     )
+                }
+
+                // Example solution for matched geometry effect
+                if let picture = selectedPicture {
+                    ScrollView {
+                        VStack(alignment: .leading, spacing: 0) {
+                            ZStack(alignment: .topTrailing) {
+                                Image(picture)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(maxHeight: .infinity)
+                                    .matchedGeometryEffect(id: picture, in: namespace)
+
+                                Button {
+                                    withAnimation {
+                                        selectedPicture = nil
+                                    }
+                                } label: {
+                                    Image(systemName: "xmark.circle.fill")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.black)
+                                        .padding(2)
+                                        .background(Color.white)
+                                        .clipShape(Circle())
+                                }
+                                .padding()
+                                .offset(x: -10, y: 30)
+
+                            }
+
+                            Text("Important title")
+                                .font(.title)
+                                .bold()
+                                .padding([.top, .horizontal])
+
+                            Text("This is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text this is some text")
+                                .font(.title3)
+                                .padding(.horizontal)
+                        }
+                    }
+                    .background(
+                        VisualEffectBlur(blurStyle: .systemThinMaterial)
+                    )
+                    .zIndex(50)
                 }
             }
         }
