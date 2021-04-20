@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @SceneStorage("text") private var text = "programming..."
     @State private var fontSize: CGFloat = 16
+    @State private var backgroundColor = Color.clear
 
     var body: some View {
         NavigationView {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CA8D68E262F125800819236 /* UserDefaults+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA8D68D262F125800819236 /* UserDefaults+Color.swift */; };
 		4CF02EDD262F0A3000CBE413 /* NaNoGoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02EDC262F0A3000CBE413 /* NaNoGoApp.swift */; };
 		4CF02EDF262F0A3000CBE413 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF02EDE262F0A3000CBE413 /* ContentView.swift */; };
 		4CF02EE1262F0A3200CBE413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CF02EE0262F0A3200CBE413 /* Assets.xcassets */; };
@@ -14,6 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CA8D68D262F125800819236 /* UserDefaults+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Color.swift"; sourceTree = "<group>"; };
 		4CF02ED9262F0A3000CBE413 /* NaNoGo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NaNoGo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CF02EDC262F0A3000CBE413 /* NaNoGoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaNoGoApp.swift; sourceTree = "<group>"; };
 		4CF02EDE262F0A3000CBE413 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +35,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4CA8D68C262F124200819236 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4CA8D68D262F125800819236 /* UserDefaults+Color.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4CF02ED0262F0A3000CBE413 = {
 			isa = PBXGroup;
 			children = (
@@ -54,6 +64,7 @@
 			children = (
 				4CF02EDC262F0A3000CBE413 /* NaNoGoApp.swift */,
 				4CF02EDE262F0A3000CBE413 /* ContentView.swift */,
+				4CA8D68C262F124200819236 /* Extensions */,
 				4CF02EE0262F0A3200CBE413 /* Assets.xcassets */,
 				4CF02EE5262F0A3200CBE413 /* Info.plist */,
 				4CF02EE2262F0A3200CBE413 /* Preview Content */,
@@ -138,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CA8D68E262F125800819236 /* UserDefaults+Color.swift in Sources */,
 				4CF02EDF262F0A3000CBE413 /* ContentView.swift in Sources */,
 				4CF02EDD262F0A3000CBE413 /* NaNoGoApp.swift in Sources */,
 			);
