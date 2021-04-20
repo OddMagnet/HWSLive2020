@@ -9,10 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("text") var text = ""
+    @State private var fontSize: CGFloat = 17
 
     var body: some View {
         NavigationView {
             TextEditor(text: $text)
+                .font(.system(size: fontSize))
+                .toolbar {
+                    ToolbarItem(placement: .bottomBar) {
+                        Stepper("Font size", value: $fontSize)
+                            .labelsHidden()
+                    }
+                }
                 .navigationTitle("NaNoGo")
         }
     }
