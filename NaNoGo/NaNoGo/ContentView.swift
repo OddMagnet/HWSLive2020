@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var text = ""
+    @SceneStorage("text") var text = ""
 
     var body: some View {
         NavigationView {
