@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var text = ""
+    @SceneStorage("text") private var text = "programming..."
 
     var body: some View {
         NavigationView {
@@ -16,6 +16,7 @@ struct ContentView: View {
                 .font(.system(size: 16, weight: .semibold, design: .monospaced))
                 .navigationTitle("NaNoGo")
         }
+        .navigationViewStyle(StackNavigationViewStyle())    // force iPadOS to give all the space to the editor
     }
 }
 
