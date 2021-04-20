@@ -23,41 +23,43 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            TextEditor(text: $text)
-                .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
-                .foregroundColor(foregroundColor)
-                .background(backgroundColor)
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        HStack {
-                            // Background color
-                            ColorPicker("Back", selection: $backgroundColor)
-                                .fixedSize()
+            VStack {
+                TextEditor(text: $text)
+                    .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
+                    .foregroundColor(foregroundColor)
+                    .background(backgroundColor)
+            }
+            .toolbar {
+                ToolbarItem(placement: .bottomBar) {
+                    HStack {
+                        // Background color
+                        ColorPicker("Back", selection: $backgroundColor)
+                            .fixedSize()
 
-                            // Foreground color
-                            ColorPicker("Fore", selection: $foregroundColor)
-                                .fixedSize()
+                        // Foreground color
+                        ColorPicker("Fore", selection: $foregroundColor)
+                            .fixedSize()
 
-                            // FontSize
-                            Stepper("\(fontSize, specifier: "%0.f")", value: $fontSize)
-                                .font(.title2)
-//                                .labelsHidden()   // needs a better way to inform user what stepper does
-                        }
+                        // FontSize
+                        Stepper("\(fontSize, specifier: "%0.f")", value: $fontSize)
+                            .font(.title2)
+                        //                                .labelsHidden()   // needs a better way to inform user what stepper does
                     }
                 }
-                .onAppear {
-                    UITextView.appearance().backgroundColor = UIColor(backgroundColor)
-                    UITextView.appearance().textColor = UIColor(foregroundColor)
-                }
-                .onChange(of: backgroundColor) { value in
-                    UserDefaults.standard.set(value, forKey: "background")
-                }
-                .onChange(of: foregroundColor) { value in
-                    UserDefaults.standard.set(value, forKey: "foreground")
-                }
-                .navigationTitle("NaNoGo")
+            }
+            .navigationTitle("NaNoGo")
         }
         .navigationViewStyle(StackNavigationViewStyle())    // force iPadOS to give all the space to the editor
+        .onAppear {
+            UITextView.appearance().backgroundColor = UIColor(backgroundColor)
+            UITextView.appearance().textColor = UIColor(foregroundColor)
+        }
+        .onChange(of: backgroundColor) { value in
+            UserDefaults.standard.set(value, forKey: "background")
+        }
+        .onChange(of: foregroundColor) { value in
+            UserDefaults.standard.set(value, forKey: "foreground")
+        }
     }
 }
 
