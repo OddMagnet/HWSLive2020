@@ -15,3 +15,7 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Labels
 - Proportional Scaling
 - Matched Geometry effect
+
+## NaNoGo
+- Text Editor
+-
