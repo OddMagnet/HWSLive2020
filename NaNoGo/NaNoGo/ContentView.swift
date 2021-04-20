@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var text = ""
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            TextEditor(text: $text)
+                .navigationTitle("NaNoGo")
+        }
     }
 }
 
