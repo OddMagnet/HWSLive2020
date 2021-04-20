@@ -24,6 +24,7 @@ extension UserDefaults {
         UserDefaults.standard.set(alpha, forKey: "\(key)Alpha")
         // use the given key to set a boolean, so when retrieving it can be checked if there are colors under the sub-keys
         UserDefaults.standard.set(true, forKey: key)
+        print("Set color for key: \(key)")
     }
 
     func color(forKey key: String) -> Color? {
@@ -34,8 +35,10 @@ extension UserDefaults {
             let blue = UserDefaults.standard.double(forKey: "\(key)Blue")
             let alpha = UserDefaults.standard.double(forKey: "\(key)Alpha")
             // then create and return the color
+            print("Retrieved color for key: \(key)")
             return Color(red: red, green: green, blue: blue, opacity: alpha)
         } else {
+            print("Could not retrieve color for key: \(key)")
             // if the given key does not exist, then there are no values for the color
             return nil
         }
