@@ -20,3 +20,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Text Editor
 - Multiple Scenes (Scene Storage)
 - Toolbars
+- Color Pickers
