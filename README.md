@@ -23,3 +23,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Color Pickers
 - AppStorage
 - ProgressView
+- Loading and saving

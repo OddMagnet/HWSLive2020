@@ -8,18 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
-    @SceneStorage("text") private var text = "programming..."
+//    @SceneStorage("text") private var text = "programming..."
+    @Binding var document: TextFile
     @AppStorage("fontSize") private var fontSize = 16
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
     @State private var wordCount: Int = 0
 
-    init() {
+    init(document: Binding<TextFile>) {
         let background = UserDefaults.standard.color(forKey: "background") ?? .white
         let foreground = UserDefaults.standard.color(forKey: "foreground") ?? .black
 
         _backgroundColor = State(wrappedValue: background)
         _foregroundColor = State(wrappedValue: foreground)
+        _document = document
     }
 
     var body: some View {
@@ -34,7 +36,7 @@ struct ContentView: View {
                 }
                 .padding()
 
-                TextEditor(text: $text)
+                TextEditor(text: $document.text)
                     .font(.system(size: CGFloat(fontSize), weight: .semibold, design: .monospaced))
                     .foregroundColor(foregroundColor)
                     .background(backgroundColor)
@@ -63,7 +65,7 @@ struct ContentView: View {
         .onAppear {
             UITextView.appearance().backgroundColor = UIColor(backgroundColor)
             UITextView.appearance().textColor = UIColor(foregroundColor)
-            wordCount = text.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
+            wordCount = document.text.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
         .onChange(of: backgroundColor) { value in
             UserDefaults.standard.set(value, forKey: "background")
@@ -71,7 +73,7 @@ struct ContentView: View {
         .onChange(of: foregroundColor) { value in
             UserDefaults.standard.set(value, forKey: "foreground")
         }
-        .onChange(of: text) { value in
+        .onChange(of: document.text) { value in
             wordCount = value.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
     }
@@ -79,6 +81,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(document: .constant(TextFile(initialText: "programming...")))
     }
 }
