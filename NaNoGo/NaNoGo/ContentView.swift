@@ -12,6 +12,7 @@ struct ContentView: View {
     @AppStorage("fontSize") private var fontSize = 16
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
+    @State private var wordCount: Int = 0
 
     init() {
         let background = UserDefaults.standard.color(forKey: "background") ?? .white
@@ -24,6 +25,15 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                HStack {
+                    Text("Words: \(wordCount, specifier: "% 3d")")
+                        .font(.system(size: 17, weight: .bold, design: .monospaced))
+
+                    ProgressView("", value: min(500, Double(wordCount)), total: 500)
+                        .offset(y: -8.0)
+                }
+                .padding()
+
                 TextEditor(text: $text)
                     .font(.system(size: CGFloat(fontSize), weight: .semibold, design: .monospaced))
                     .foregroundColor(foregroundColor)
@@ -53,12 +63,16 @@ struct ContentView: View {
         .onAppear {
             UITextView.appearance().backgroundColor = UIColor(backgroundColor)
             UITextView.appearance().textColor = UIColor(foregroundColor)
+            wordCount = text.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
         .onChange(of: backgroundColor) { value in
             UserDefaults.standard.set(value, forKey: "background")
         }
         .onChange(of: foregroundColor) { value in
             UserDefaults.standard.set(value, forKey: "foreground")
+        }
+        .onChange(of: text) { value in
+            wordCount = value.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
     }
 }

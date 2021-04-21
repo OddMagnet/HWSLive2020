@@ -22,3 +22,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Toolbars
 - Color Pickers
 - AppStorage
+- ProgressView
