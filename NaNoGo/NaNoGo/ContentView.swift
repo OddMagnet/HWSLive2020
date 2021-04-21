@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("text") var text = ""
-    @State private var fontSize: CGFloat = 17
+    @AppStorage("fontSize") private var fontSize = 17
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
 
@@ -24,7 +24,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             TextEditor(text: $text)
-                .font(.system(size: fontSize))
+                .font(.system(size: CGFloat(fontSize)))
                 .foregroundColor(foregroundColor)
                 .background(backgroundColor)
                 .toolbar {
