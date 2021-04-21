@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @SceneStorage("text") var text = ""
+    @Binding var document: TextFile
     @AppStorage("fontSize") private var fontSize = 17
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
     @State private var wordCount: Int = 0
 
-    init() {
+    init(document: Binding<TextFile>) {
         let bg = UserDefaults.standard.color(forKey: "Background") ?? .white
         let fg = UserDefaults.standard.color(forKey: "Foreground") ?? .black
 
         _backgroundColor = State(wrappedValue: bg)
         _foregroundColor = State(wrappedValue: fg)
+        _document = document
     }
 
     var body: some View {
@@ -28,7 +29,7 @@ struct ContentView: View {
                 ProgressView("Word Count: \(wordCount)", value: min(500, Double(wordCount)), total: 500)
                     .padding()
 
-                TextEditor(text: $text)
+                TextEditor(text: $document.text)
                     .font(.system(size: CGFloat(fontSize)))
                     .foregroundColor(foregroundColor)
                     .background(backgroundColor)
@@ -56,7 +57,7 @@ struct ContentView: View {
         .onChange(of: foregroundColor) { value in
             UserDefaults.standard.set(value, forKey: "Foreground")
         }
-        .onChange(of: text) { value in
+        .onChange(of: document.text) { value in
             wordCount = value.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
     }
@@ -95,6 +96,6 @@ extension UserDefaults {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(document: .constant(TextFile()))
     }
 }
