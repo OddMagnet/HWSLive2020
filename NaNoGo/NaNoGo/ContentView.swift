@@ -12,6 +12,7 @@ struct ContentView: View {
     @AppStorage("fontSize") private var fontSize = 17
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
+    @State private var wordCount: Int = 0
 
     init() {
         let bg = UserDefaults.standard.color(forKey: "Background") ?? .white
@@ -23,23 +24,28 @@ struct ContentView: View {
 
     var body: some View {
         NavigationView {
-            TextEditor(text: $text)
-                .font(.system(size: CGFloat(fontSize)))
-                .foregroundColor(foregroundColor)
-                .background(backgroundColor)
-                .toolbar {
-                    ToolbarItem(placement: .bottomBar) {
-                        HStack {
-                            Stepper("Font size", value: $fontSize)
-                                .labelsHidden()
-                            ColorPicker("BG", selection: $backgroundColor)
-                                .fixedSize()
-                            ColorPicker("FG", selection: $foregroundColor)
-                                .fixedSize()
+            VStack {
+                ProgressView("Word Count: \(wordCount)", value: min(500, Double(wordCount)), total: 500)
+                    .padding()
+
+                TextEditor(text: $text)
+                    .font(.system(size: CGFloat(fontSize)))
+                    .foregroundColor(foregroundColor)
+                    .background(backgroundColor)
+                    .toolbar {
+                        ToolbarItem(placement: .bottomBar) {
+                            HStack {
+                                Stepper("Font size", value: $fontSize)
+                                    .labelsHidden()
+                                ColorPicker("BG", selection: $backgroundColor)
+                                    .fixedSize()
+                                ColorPicker("FG", selection: $foregroundColor)
+                                    .fixedSize()
+                            }
                         }
                     }
-                }
-                .navigationTitle("NaNoGo")
+            }
+            .navigationTitle("NaNoGo")
         }
         .onAppear {
             UITextView.appearance().backgroundColor = .clear
@@ -49,6 +55,9 @@ struct ContentView: View {
         }
         .onChange(of: foregroundColor) { value in
             UserDefaults.standard.set(value, forKey: "Foreground")
+        }
+        .onChange(of: text) { value in
+            wordCount = value.components(separatedBy: .whitespacesAndNewlines).filter { $0.isEmpty == false }.count
         }
     }
 }
