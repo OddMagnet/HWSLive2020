@@ -21,3 +21,4 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Multiple Scenes (Scene Storage)
 - Toolbars
 - Color Pickers
+- AppStorage

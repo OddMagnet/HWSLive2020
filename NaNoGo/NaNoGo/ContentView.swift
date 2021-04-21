@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @SceneStorage("text") private var text = "programming..."
-    @State private var fontSize: CGFloat = 16
+    @AppStorage("fontSize") private var fontSize = 16
     @State private var backgroundColor: Color
     @State private var foregroundColor: Color
 
@@ -25,7 +25,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 TextEditor(text: $text)
-                    .font(.system(size: fontSize, weight: .semibold, design: .monospaced))
+                    .font(.system(size: CGFloat(fontSize), weight: .semibold, design: .monospaced))
                     .foregroundColor(foregroundColor)
                     .background(backgroundColor)
             }
@@ -43,7 +43,7 @@ struct ContentView: View {
                         // FontSize
                         Stepper("\(fontSize, specifier: "%0.f")", value: $fontSize)
                             .font(.title2)
-                        //                                .labelsHidden()   // needs a better way to inform user what stepper does
+                        .labelsHidden()   // needs a better way to inform user what stepper does
                     }
                 }
             }
