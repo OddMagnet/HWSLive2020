@@ -14,6 +14,13 @@ class ViewController: UIViewController {
         return UICollectionViewCompositionalLayout.list(using: config)
     }()
 
+    // alternative layout
+    lazy var flowLayout: UICollectionViewLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 200, height: 100)
+        return layout
+    }()
+
     // The CollectionView itself
     lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
