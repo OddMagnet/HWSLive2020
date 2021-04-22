@@ -24,3 +24,6 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - AppStorage
 - ProgressView
 - Loading and saving
+
+## Symbol Explorer
+- UICollectionView
