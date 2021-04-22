@@ -14,6 +14,8 @@
 		4C88FB8E2631F0A800B9498F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C88FB8C2631F0A800B9498F /* LaunchScreen.storyboard */; };
 		4C88FB992631F0D700B9498F /* symbols.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C88FB972631F0D700B9498F /* symbols.json */; };
 		4C88FB9A2631F0D700B9498F /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88FB982631F0D700B9498F /* Bundle-Decodable.swift */; };
+		4C93586C2631F468000222DD /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C93586B2631F468000222DD /* Row.swift */; };
+		4C93586F2631F748000222DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C93586E2631F748000222DD /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4C88FB8F2631F0A800B9498F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C88FB972631F0D700B9498F /* symbols.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = symbols.json; sourceTree = "<group>"; };
 		4C88FB982631F0D700B9498F /* Bundle-Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle-Decodable.swift"; sourceTree = "<group>"; };
+		4C93586B2631F468000222DD /* Row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Row.swift; sourceTree = "<group>"; };
+		4C93586E2631F748000222DD /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +65,8 @@
 				4C88FB812631F0A600B9498F /* AppDelegate.swift */,
 				4C88FB832631F0A600B9498F /* SceneDelegate.swift */,
 				4C88FB852631F0A600B9498F /* ViewController.swift */,
+				4C93586B2631F468000222DD /* Row.swift */,
+				4C93586E2631F748000222DD /* Main.storyboard */,
 				4C88FB8A2631F0A800B9498F /* Assets.xcassets */,
 				4C88FB962631F0C300B9498F /* Assets */,
 				4C88FB8C2631F0A800B9498F /* LaunchScreen.storyboard */,
@@ -138,6 +144,7 @@
 				4C88FB8E2631F0A800B9498F /* LaunchScreen.storyboard in Resources */,
 				4C88FB992631F0D700B9498F /* symbols.json in Resources */,
 				4C88FB8B2631F0A800B9498F /* Assets.xcassets in Resources */,
+				4C93586F2631F748000222DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +158,7 @@
 				4C88FB862631F0A600B9498F /* ViewController.swift in Sources */,
 				4C88FB822631F0A600B9498F /* AppDelegate.swift in Sources */,
 				4C88FB842631F0A600B9498F /* SceneDelegate.swift in Sources */,
+				4C93586C2631F468000222DD /* Row.swift in Sources */,
 				4C88FB9A2631F0D700B9498F /* Bundle-Decodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
