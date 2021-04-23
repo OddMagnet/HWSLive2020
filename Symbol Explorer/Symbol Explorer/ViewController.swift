@@ -11,6 +11,23 @@ class ViewController: UIViewController {
     // Layout for the CollectionView
     lazy var layout: UICollectionViewLayout = {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+
+        // swipe to delete
+        config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
+            UISwipeActionsConfiguration(actions: [
+                UIContextualAction(style: .destructive, title: "Delete", handler: { action, view, completion in
+                    guard let self = self else {
+                        completion(false)
+                        return
+                    }
+
+                    self.data[indexPath.section].items.remove(at: indexPath.item)
+                    self.updateSnapshot(animating: true)
+                    completion(true)
+                })
+            ])
+        }
+
         return UICollectionViewCompositionalLayout.list(using: config)
     }()
 
