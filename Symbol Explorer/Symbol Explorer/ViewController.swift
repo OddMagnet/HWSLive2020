@@ -28,6 +28,9 @@ class ViewController: UIViewController {
             ])
         }
 
+        // header
+        config.headerMode = .firstItemInSection
+
         return UICollectionViewCompositionalLayout.list(using: config)
     }()
 
@@ -50,7 +53,9 @@ class ViewController: UIViewController {
         // create a cell registration
         let cell = UICollectionView.CellRegistration<UICollectionViewListCell, Row> { [weak self] cell, indexPath, row in
             var content = cell.defaultContentConfiguration()
-            content.image = UIImage(systemName: row.title)
+            if indexPath.item > 0 { // add images to all items after the first in a section
+                content.image = UIImage(systemName: row.title)
+            }
             content.text = row.title
             cell.contentConfiguration = content
         }
