@@ -29,7 +29,7 @@ class ViewController: UIViewController {
         }
 
         // header
-        config.headerMode = .firstItemInSection
+        config.headerMode = .supplementary
 
         return UICollectionViewCompositionalLayout.list(using: config)
     }()
@@ -53,16 +53,26 @@ class ViewController: UIViewController {
         // create a cell registration
         let cell = UICollectionView.CellRegistration<UICollectionViewListCell, Row> { [weak self] cell, indexPath, row in
             var content = cell.defaultContentConfiguration()
-            if indexPath.item > 0 { // add images to all items after the first in a section
-                content.image = UIImage(systemName: row.title)
-            }
+            content.image = UIImage(systemName: row.title)
             content.text = row.title
             cell.contentConfiguration = content
+        }
+
+        // create a header
+        let header = UICollectionView.SupplementaryRegistration<HeaderView>(elementKind: "Header") { [weak self] supplementaryView, string, indexPath in
+            guard let firstApp = self?.dataSource.itemIdentifier(for: indexPath) else { return }
+            guard let section = self?.dataSource.snapshot().sectionIdentifier(containingItem: firstApp) else { return }
+            supplementaryView.label.text = section
         }
 
         // create the data source
         let source = UICollectionViewDiffableDataSource<String, Row>(collectionView: collectionView) { collectionView, indexPath, identifier in
             collectionView.dequeueConfiguredReusableCell(using: cell, for: indexPath, item: identifier)
+        }
+
+        // add the header
+        source.supplementaryViewProvider = { view, kind, index in
+            self.collectionView.dequeueConfiguredReusableSupplementary(using: header, for: index)
         }
 
         return source
