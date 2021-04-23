@@ -13,23 +13,23 @@ class ViewController: UIViewController {
         var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
 
         // swipe to delete
-        config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
-            UISwipeActionsConfiguration(actions: [
-                UIContextualAction(style: .destructive, title: "Delete", handler: { action, view, completion in
-                    guard let self = self else {
-                        completion(false)
-                        return
-                    }
-
-                    self.data[indexPath.section].items.remove(at: indexPath.item)
-                    self.updateSnapshot(animating: true)
-                    completion(true)
-                })
-            ])
-        }
+//        config.trailingSwipeActionsConfigurationProvider = { [weak self] indexPath in
+//            UISwipeActionsConfiguration(actions: [
+//                UIContextualAction(style: .destructive, title: "Delete", handler: { action, view, completion in
+//                    guard let self = self else {
+//                        completion(false)
+//                        return
+//                    }
+//
+//                    self.data[indexPath.section].items.remove(at: indexPath.item)
+//                    self.updateSnapshot(animating: true)
+//                    completion(true)
+//                })
+//            ])
+//        }
 
         // header
-        config.headerMode = .supplementary
+//        config.headerMode = .supplementary
 
         return UICollectionViewCompositionalLayout.list(using: config)
     }()
@@ -56,6 +56,14 @@ class ViewController: UIViewController {
             content.image = UIImage(systemName: row.title)
             content.text = row.title
             cell.contentConfiguration = content
+
+            // accessories only for parent rows (rows with child elements)
+            if row.items.isEmpty {
+                cell.accessories = []
+            } else {
+                let options = UICellAccessory.OutlineDisclosureOptions(style: .header)
+                cell.accessories = [.outlineDisclosure(options: options)]
+            }
         }
 
         // create a header
@@ -95,13 +103,16 @@ class ViewController: UIViewController {
     /// - Parameter animating: If the update should be animated
     func updateSnapshot(animating: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<String, Row>()
-        snapshot.appendSections(data.map(\.title))
+        snapshot.appendSections(["Main"])
+        dataSource.apply(snapshot, animatingDifferences: animating)
 
+        var sectionSnapshot = NSDiffableDataSourceSectionSnapshot<Row>()
         for section in data {
-            snapshot.appendItems(section.items, toSection: section.title)
+            sectionSnapshot.append([section])
+            sectionSnapshot.append(section.items, to: section)
         }
 
-        dataSource.apply(snapshot, animatingDifferences: animating)
+        dataSource.apply(sectionSnapshot, to: "Main", animatingDifferences: false)
     }
 }
 
