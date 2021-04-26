@@ -31,4 +31,6 @@ Additionally there are two branches, one for my solution for the tasks, one for 
 - Custom headers
 - Collapsable rows
 
-
+## BarkingLot
+- App Clips
+-
