@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SelectServiceView: View {
-    let services = Bundle.main.decode([Service].self, from: "services,json")
+    let services = Bundle.main.decode([Service].self, from: "services.json")
     let store: Store
     
     var body: some View {
