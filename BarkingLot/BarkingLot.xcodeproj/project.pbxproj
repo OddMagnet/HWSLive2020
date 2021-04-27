@@ -38,6 +38,9 @@
 		4CE7A24B26389B7200D87729 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1352C72636E7270011A73F /* Coordinate.swift */; };
 		4CE7A24C26389B7200D87729 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1352C42636E6FE0011A73F /* Store.swift */; };
 		4CE7A24F26389B8F00D87729 /* Bundle-Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1352B12636E5210011A73F /* Bundle-Decodable.swift */; };
+		4CE7A25C26389DCB00D87729 /* Array+Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CE7A25B26389DCB00D87729 /* Array+Value.swift */; };
+		4CE7A2612638A18900D87729 /* stores.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C1352AA2636E4F10011A73F /* stores.json */; };
+		4CE7A2622638A18900D87729 /* services.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C1352A92636E4F10011A73F /* services.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +95,7 @@
 		4CE7A23926389B0200D87729 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4CE7A23B26389B0200D87729 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CE7A23C26389B0200D87729 /* BarkingClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BarkingClip.entitlements; sourceTree = "<group>"; };
+		4CE7A25B26389DCB00D87729 /* Array+Value.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Value.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +197,7 @@
 			children = (
 				4CE7A23226389B0000D87729 /* BarkingClipApp.swift */,
 				4CE7A23426389B0000D87729 /* ContentView.swift */,
+				4CE7A25A26389DB900D87729 /* Helper */,
 				4CE7A23626389B0200D87729 /* Assets.xcassets */,
 				4CE7A23B26389B0200D87729 /* Info.plist */,
 				4CE7A23C26389B0200D87729 /* BarkingClip.entitlements */,
@@ -207,6 +212,14 @@
 				4CE7A23926389B0200D87729 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		4CE7A25A26389DB900D87729 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4CE7A25B26389DCB00D87729 /* Array+Value.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +314,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CE7A2612638A18900D87729 /* stores.json in Resources */,
+				4CE7A2622638A18900D87729 /* services.json in Resources */,
 				4CE7A23A26389B0200D87729 /* Preview Assets.xcassets in Resources */,
 				4CE7A23726389B0200D87729 /* Assets.xcassets in Resources */,
 			);
@@ -334,6 +349,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CE7A24A26389B7200D87729 /* PurchaseView.swift in Sources */,
+				4CE7A25C26389DCB00D87729 /* Array+Value.swift in Sources */,
 				4CE7A23526389B0000D87729 /* ContentView.swift in Sources */,
 				4CE7A24826389B7200D87729 /* SelectStoreView.swift in Sources */,
 				4CE7A24C26389B7200D87729 /* Store.swift in Sources */,

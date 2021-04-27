@@ -23,7 +23,7 @@ struct SelectStoreView: View {
                 .padding()
 
             List(matchingStores, selection: $selection) { store in
-                NavigationLink(destination: SelectServiceView(store: store)) {
+                NavigationLink(destination: SelectServiceView(store: store), tag: store, selection: $selection) {
                     VStack(alignment: .leading) {
                         Text(store.name)
                             .font(.headline)
@@ -38,6 +38,9 @@ struct SelectStoreView: View {
         .navigationTitle("Select Store")
         .onAppear { runSearch(for: searchText) }
         .onChange(of: searchText, perform: runSearch)
+        .onReceive(model.$selectedStore) { newValue in
+            selection = allStores.first(where: { $0.id == newValue })
+        }
     }
 
     func runSearch(for value: String) {
