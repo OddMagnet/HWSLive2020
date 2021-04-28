@@ -11,12 +11,11 @@ import Intents
 
 struct Entry: TimelineEntry {
     let date: Date
-    let targetDate: Date
 }
 
 struct TimeProvider: TimelineProvider {
     func placeholder(in context: Context) -> Entry {
-        Entry(date: Date(), targetDate: Date().addingTimeInterval(3600))
+        Entry(date: Date())
     }
 
     /// Provides a sample of the data for preview purposes
@@ -25,7 +24,7 @@ struct TimeProvider: TimelineProvider {
     ///   - completion: The completion handler
     func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
         let date = Date()
-        let model = Entry(date: date, targetDate: Date().addingTimeInterval(6000))
+        let model = Entry(date: date)
         completion(model)
     }
 
@@ -37,41 +36,74 @@ struct TimeProvider: TimelineProvider {
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         var entries = [Entry]()
 
-        let date = Date()
-        let targetDate = Date().addingTimeInterval(3600)
+        // ensure the date's seconds are set to 0
+        var components = Calendar.current.dateComponents([.era, .year, .month, .day, .hour, .minute, .second], from: Date())
+        components.second = 0
+        let roundedDate = Calendar.current.date(from: components) ?? Date()
 
-        let model = Entry(date: date, targetDate: targetDate)
-        entries.append(model)
+        // create an entry for each minute
+        for minute in 0 ..< 60 {
+            let entryDate = Calendar.current.date(byAdding: .minute, value: minute, to: roundedDate)!
+            let entry = Entry(date: entryDate)
+            entries.append(entry)
+        }
 
         let timeline = Timeline(entries: entries, policy: .atEnd)
         completion(timeline)
     }
 }
 
-struct WidgetView: View {
-    @Environment(\.widgetFamily) var family
+struct TimeZoneView: View {
+    let sourceDate: Date
+    let timeZone: String
 
-    let data: Entry
-    var font: Font {
-        if family == .systemSmall {
-            return .title
-        } else {
-            return .largeTitle
+    var body: some View {
+        Link(destination: URL(string: timeZone)!) {
+            VStack {
+                Text(timeZone)
+                    .font(.caption)
+                Text(dateString(for: timeZone))
+                    .font(.title)
+            }
         }
     }
 
+    func dateString(for timeZone: String) -> String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        formatter.timeZone = TimeZone(abbreviation: timeZone)
+        return formatter.string(from: sourceDate)
+    }
+}
+
+struct WidgetView: View {
+    @Environment(\.widgetFamily) var family
+    var data: Entry
+
     var body: some View {
-        ZStack {
-            ContainerRelativeShape()
-                .inset(by: 15)
-                .fill(Color.blue)
-            Text(data.targetDate, style: .timer)
-                .multilineTextAlignment(.center)
-                .font(font)
-                .padding()
+        switch family {
+            case .systemSmall:
+                TimeZoneView(sourceDate: data.date, timeZone: "CEST")
+            case .systemMedium:
+                HStack(spacing: 20) {
+                    TimeZoneView(sourceDate: data.date, timeZone: "CEST")
+                    TimeZoneView(sourceDate: data.date, timeZone: "PST")
+                }
+            case .systemLarge:
+                VStack(spacing: 40) {
+                    HStack(spacing: 20) {
+                        TimeZoneView(sourceDate: data.date, timeZone: "CEST")
+                        TimeZoneView(sourceDate: data.date, timeZone: "PST")
+                    }
+
+                    HStack(spacing: 20) {
+                        TimeZoneView(sourceDate: data.date, timeZone: "EST")
+                        TimeZoneView(sourceDate: data.date, timeZone: "JST")
+                    }
+                }
+            @unknown default:
+                fatalError("Add support for new widgetFamily size case")
         }
-        .background(Color(white: 0.1))
-        .foregroundColor(.white)
     }
 }
 
@@ -90,8 +122,8 @@ struct Config: Widget {
 
 struct Widget_Previews: PreviewProvider {
     static var previews: some View {
-        WidgetView(data: Entry(date: Date(), targetDate: Date().addingTimeInterval(3600)))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+        WidgetView(data: Entry(date: Date()))
+            .previewContext(WidgetPreviewContext(family: .systemLarge))
     }
 }
 
